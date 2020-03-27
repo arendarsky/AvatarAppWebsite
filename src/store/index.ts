@@ -1,15 +1,20 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
+import Vue from 'vue';
+import Vuex from 'vuex';
 
-Vue.use(Vuex)
+// modules
+import * as user from '@/store/modules/user';
+import * as casting from '@/store/modules/casting';
 
-export default new Vuex.Store({
-  state: {
-  },
-  mutations: {
-  },
-  actions: {
-  },
+Vue.use(Vuex);
+
+export interface IRootState {
+  user: user.IUserState,
+  casting: casting.ICastingState
+}
+
+export default new Vuex.Store<IRootState>({
   modules: {
+    user: user.store,
+    casting: casting.store
   }
-})
+});
