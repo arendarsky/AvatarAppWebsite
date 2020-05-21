@@ -1,18 +1,18 @@
-import { IBaseUseCase } from "@/usecases/BaseUseCase"
-import ErrorService from "@/services/ErrorService"
+import { IBaseUseCase } from '@/usecases/BaseUseCase';
+import ErrorService from '@/services/ErrorService';
 import CastingEntity, {ILike} from '@/entities/Casting';
 import {IBaseCastingUseCase} from '@/usecases/casting/BaseCastingUseCase';
 
 export default class GetVideoQueueUseCase implements IBaseUseCase {
-  casting: CastingEntity;
-  errorService: ErrorService;
+  private casting: CastingEntity;
+  private errorService: ErrorService;
 
   constructor({ casting, errorService }: IBaseCastingUseCase) {
     this.casting = casting;
     this.errorService = errorService;
   }
 
-  async execute() {
+  public async execute() {
     try {
       await this.casting.LoadQueue();
     } catch (e) {

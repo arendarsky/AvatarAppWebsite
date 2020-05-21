@@ -1,6 +1,6 @@
-import { IBaseUseCase } from "../BaseUseCase"
-import { UserEntity, IUserCredentials } from "@/entities/User"
-import ErrorService from "@/services/ErrorService"
+import { IBaseUseCase } from '../BaseUseCase';
+import { UserEntity, IUserCredentials } from '@/entities/User';
+import ErrorService from '@/services/ErrorService';
 
 export interface ILoginUseCase {
     user: UserEntity;
@@ -8,15 +8,15 @@ export interface ILoginUseCase {
 }
 
 export default class LoginUseCase implements IBaseUseCase {
-    user: UserEntity;
-    errorService: ErrorService;
+  private user: UserEntity;
+  private errorService: ErrorService;
 
     constructor({ user, errorService }: ILoginUseCase) {
         this.user = user;
         this.errorService = errorService;
     }
 
-    async execute(credentials: IUserCredentials) {
+    public async execute(credentials: IUserCredentials) {
         try {
             await this.user.login(credentials);
         } catch (e) {

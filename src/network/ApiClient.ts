@@ -1,28 +1,27 @@
-import axios from "axios";
-import { IApiResponse } from "./ApiResponse";
-import { INetworkClient } from "./NetworkClient";
-import { IApiError } from "./ApiError"
-import { IApiRequest } from "./ApiRequest";
+import axios from 'axios';
+import { IApiResponse } from './ApiResponse';
+import { INetworkClient } from './NetworkClient';
+import { IApiError } from './ApiError';
+import { IApiRequest } from './ApiRequest';
 import store from '@/store';
 
 export enum HttpMethod {
-    GET = "GET",
-    POST = "POST",
-    DELETE = "DELETE",
-    PUT = "PUT"
+    GET = 'GET',
+    POST = 'POST',
+    DELETE = 'DELETE',
+    PUT = 'PUT',
 }
 
 export class ApiClient implements INetworkClient {
-    static shared = new ApiClient();
+    public static shared = new ApiClient();
 
-    baseUrl = "https://xce-factor.ru";
+    public baseUrl = 'https://xce-factor.ru';
 
-    userToken = store.state.user.userToken;
+    public timeout = 15 * 1000;
 
-    timeout = 15 * 1000;
-
-    request<T extends IApiResponse>(request: IApiRequest<T>): Promise<T> {
+    public request<T extends IApiResponse>(request: IApiRequest<T>): Promise<T> {
         const isRead = request.method === HttpMethod.GET || request.query;
+        const userToken = store.state.user.userToken;
 
         return new Promise<T>((resolve, reject) => {
             axios({
@@ -33,15 +32,15 @@ export class ApiClient implements INetworkClient {
                     data: !isRead && request.params,
                     timeout: this.timeout,
                     baseURL: request.baseUrl || this.baseUrl,
-                    headers: request.auth ? this.createHeaders() : null
+                    headers: request.auth ? ApiClient.createHeaders(userToken) : null,
                 })
-                .then(data => {
+                .then((data) => {
                     const response = request.parse
                         ? request.parse(data)
                         : this.parse<T>(data);
                     resolve(response);
                 })
-                .catch(err => {
+                .catch((err) => {
                     const apiError = this.normalizeError(err);
                     reject(apiError);
                 });
@@ -58,15 +57,17 @@ export class ApiClient implements INetworkClient {
         return {
             status: error.response && error.response.status,
             message: error.message,
-            raw: error
+            raw: error,
         };
     }
 
     // Create headers
-    private createHeaders(): any {
-
-          return {
-            Authorization: `Bearer ${this.userToken}`
-          };
+    private static createHeaders(userToken: string | null): any {
+      if (!userToken) {
+        throw new Error('unauthorized');
+      }
+      return {
+        Authorization: `Bearer ${userToken}`,
+      };
     }
 }
