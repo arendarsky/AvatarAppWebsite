@@ -10,6 +10,7 @@ import EmailConfirmation from '@/views/EmailConfirmation.vue';
 import PasswordReset from '@/components/modules/authentication/PasswordReset.vue';
 import PasswordChange from '@/views/PasswordChange.vue';
 import SendEmailConfirmation from '@/components/modules/authentication/SendEmailConfirmation.vue';
+import Video from '@/views/Video.vue';
 
 Vue.use(VueRouter);
 
@@ -63,6 +64,11 @@ const routes = [
     path: '/auth/password/change',
     name: 'PasswordChange',
     component: PasswordChange,
+  },
+  {
+    path: '/video/:id',
+    name: 'Video',
+    component: Video,
   },
 ];
 
