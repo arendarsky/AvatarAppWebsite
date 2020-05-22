@@ -10,6 +10,6 @@ export class StoreItems implements IFluxStandardAction {
   constructor(public payload: IRatingItem[]) {}
 }
 
-export class Clear implements IFluxStandardAction{
+export class Clear implements IFluxStandardAction {
   public type = Types.CLEAR;
 }

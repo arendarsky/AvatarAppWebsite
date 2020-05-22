@@ -3,9 +3,9 @@ import App from './App.vue';
 import router from './router';
 import store from './store';
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue';
+import VueMeta from 'vue-meta';
 
-
-import '@/content/custom.scss';
+import "@/content/custom.scss"
 
 Vue.use(BootstrapVue);
 Vue.use(IconsPlugin);

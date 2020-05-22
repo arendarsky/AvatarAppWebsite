@@ -23,7 +23,7 @@ export namespace ProfileApi {
       public parse = (data: AxiosResponse) => data.data;
     }
 
-  export class SetName implements IApiRequest<any> {
+    export class SetName implements IApiRequest<any> {
     public path = 'api/profile/set_name';
     public method = HttpMethod.GET;
     public auth = true;
@@ -34,7 +34,7 @@ export namespace ProfileApi {
     public parse = (data: AxiosResponse) => data.data;
   }
 
-  export class SendVideoToCasting implements IApiRequest<any> {
+    export class SendVideoToCasting implements IApiRequest<any> {
     public path = 'api/video/set_active';
     public method = HttpMethod.GET;
     public auth = true;
@@ -45,7 +45,7 @@ export namespace ProfileApi {
     public parse = (data: AxiosResponse) => data.data;
   }
 
-  export class RemoveVideo implements IApiRequest<any> {
+    export class RemoveVideo implements IApiRequest<any> {
     public path: string;
     public method = HttpMethod.GET;
     public auth = true;

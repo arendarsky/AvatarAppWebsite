@@ -21,7 +21,7 @@ export default class LoadContainerUseCase implements IBaseUseCase {
 
   public async execute() {
     try {
-      if (this.moderationRepository.getItem() != null){
+      if (this.moderationRepository.getItem() != null) {
         return;
       }
       const data = await this.moderationRepository.fetchItems(this.number);

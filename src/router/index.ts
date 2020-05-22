@@ -38,7 +38,7 @@ const routes = [
   {
     path: '/moderation',
     name: 'Moderation',
-    component: Moderation
+    component: Moderation,
   },
   {
     path: '/register',

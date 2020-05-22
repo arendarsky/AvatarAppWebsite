@@ -6,8 +6,6 @@ import {ApiClient} from '@/network/ApiClient';
 import {UserApi} from '@/network/api/User';
 
 export default class UserTokenRepository implements IBaseRepository {
-  constructor() {
-  }
 
   public async fetchItem(credentials: IUserCredentials): Promise<IUserToken> {
     return await ApiClient.shared.request(new UserApi.GetToken(credentials));

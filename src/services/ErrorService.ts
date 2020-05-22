@@ -1,17 +1,17 @@
-import { IBaseService } from "./BaseService";
+import { IBaseService } from './BaseService';
 
 export interface IErrorService {
-    context?: any // TODO: define error context type
+    context?: any; // TODO: define error context type
 }
 
 export default class ErrorService implements IBaseService {
-    context: any;
+    public context: any;
 
-    constructor({ context = "" }: IErrorService) {
+    constructor({ context = '' }: IErrorService) {
         this.context = context;
     }
 
-    async handle(error: any) {
+    public async handle(error: any) {
         console.log(`error called in ${this.context}`);
         console.log(error);
         return;

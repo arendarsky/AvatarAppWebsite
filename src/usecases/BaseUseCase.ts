@@ -1,3 +1,3 @@
 export interface IBaseUseCase {
-    execute: (params?: any) => Promise<any>
+    execute: (params?: any) => Promise<any>;
 }
