@@ -35,7 +35,7 @@ export class PrivateProfileEntity {
     await this.sendingVideoToCastingService.handle(fileName);
   }
 
-  public async removeVideo(fileName: string){
+  public async removeVideo(fileName: string) {
     await this.removingVideoService.handle(fileName);
   }
 }

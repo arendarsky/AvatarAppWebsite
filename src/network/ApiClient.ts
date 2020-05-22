@@ -15,6 +15,16 @@ export enum HttpMethod {
 export class ApiClient implements INetworkClient {
     public static shared = new ApiClient();
 
+    // Create headers
+    private static createHeaders(userToken: string | null): any {
+      if (!userToken) {
+        throw new Error('unauthorized');
+      }
+      return {
+        Authorization: `Bearer ${userToken}`,
+      };
+    }
+
     public baseUrl = 'https://xce-factor.ru';
 
     public timeout = 15 * 1000;
@@ -59,15 +69,5 @@ export class ApiClient implements INetworkClient {
             message: error.message,
             raw: error,
         };
-    }
-
-    // Create headers
-    private static createHeaders(userToken: string | null): any {
-      if (!userToken) {
-        throw new Error('unauthorized');
-      }
-      return {
-        Authorization: `Bearer ${userToken}`,
-      };
     }
 }

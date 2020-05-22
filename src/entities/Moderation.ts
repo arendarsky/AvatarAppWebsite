@@ -4,8 +4,8 @@ import {ICastingItem, ILike} from '@/entities/Casting';
 import ModerationRepository from '@/repositories/ModerationRepository';
 import ModerationService from '@/services/ModerationService';
 
-export interface IModerationItem extends ICastingItem{
-  email:string;
+export interface IModerationItem extends ICastingItem {
+  email: string;
 }
 
 export default class ModerationEntity {

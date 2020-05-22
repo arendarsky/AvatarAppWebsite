@@ -16,7 +16,7 @@ export default class ChangePasswordUseCase implements IBaseUseCase {
     this.errorService = errorService;
   }
 
-  public async execute(passwordChange: IPasswordChange) : Promise<boolean | null> {
+  public async execute(passwordChange: IPasswordChange): Promise<boolean | null> {
     try {
       return await this.user.passwordChange(passwordChange);
     } catch (e) {

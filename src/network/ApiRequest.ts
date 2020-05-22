@@ -1,5 +1,5 @@
-import { HttpMethod } from "./ApiClient";
-import { IApiResponse} from "./ApiResponse";
+import { HttpMethod } from './ApiClient';
+import { IApiResponse} from './ApiResponse';
 
 export interface IApiRequest<T extends IApiResponse> {
     path: string;
@@ -9,4 +9,4 @@ export interface IApiRequest<T extends IApiResponse> {
     baseUrl?: string;
     auth?: boolean;
     parse?: (data: any) => T;
-};
+}

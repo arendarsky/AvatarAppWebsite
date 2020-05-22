@@ -1,17 +1,22 @@
-import Vue from 'vue'
-import App from './App.vue'
-import router from './router'
-import store from './store'
-import { BootstrapVue, IconsPlugin } from "bootstrap-vue"
+import Vue from 'vue';
+import App from './App.vue';
+import router from './router';
+import store from './store';
+import { BootstrapVue, IconsPlugin } from 'bootstrap-vue';
+import VueMeta from 'vue-meta';
 
-import "@/content/custom.scss"
+import '@/content/custom.scss';
+
+Vue.use(VueMeta, {
+  refreshOnceOnNavigation: true,
+});
 
 Vue.use(BootstrapVue);
 Vue.use(IconsPlugin);
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 
 new Vue({
   router,
   store,
-  render: h => h(App)
-}).$mount('#app')
+  render: (h) => h(App),
+}).$mount('#app');
