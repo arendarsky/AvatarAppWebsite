@@ -5,7 +5,7 @@
     <b-col>
       <div class="footerBorder">
         <div class="footerBorder mt-3 mb-3 ml-4 mr-4">
-          <b-container>
+          <b-container class="mt-4 mb-4">
             <b-row>
               <b-col>
                 <b-container>
@@ -13,7 +13,7 @@
                     <b-col><p class="footerText">Скачивай приложение XCE FACTOR</p></b-col>
                   </b-row>
                   <b-row>
-                    <b-col><img alt="App Store" src="@/assets/logos/appstore.png"></b-col>
+                    <b-col><b-img alt="App Store" src="@/assets/logos/appstore.png"></b-col>
                     <b-col></b-col>
                   </b-row>
                 </b-container>

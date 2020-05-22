@@ -1,15 +1,9 @@
 <template>
-  <v-app>
-    <v-app-bar app absolute>
-      <Header />
-    </v-app-bar>
-    <v-content>
-      <router-view/>
-    </v-content>
-    <v-footer>
-      <Footer/>
-    </v-footer>
-  </v-app>
+  <div>
+    <Header/>
+    <router-view/>
+    <Footer/>
+  </div>
 </template>
 
 <script lang="ts">
