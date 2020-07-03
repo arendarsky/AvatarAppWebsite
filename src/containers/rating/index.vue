@@ -1,10 +1,12 @@
 <template>
   <b-container align="center">
+    <b-row class="my-2"><b-col></b-col></b-row>
     <b-row>
       <b-col>
-          <b-button v-show="!showOverlay" pill size="lg" @click="onLoad()" variant="outline-dark"><b-icon-arrow-clockwise variant="info"></b-icon-arrow-clockwise></b-button>
+        <b-link href="#" class="test" @click="onLoad()"><h1 class="common-text">РЕЙТИНГ XCE FACTOR 2020</h1></b-link>
       </b-col>
     </b-row>
+    <b-row class="my-2"><b-col></b-col></b-row>
     <b-row v-for="(ratingItem, index) in presenter.items">
       <b-col class="mb-5">
         <b-overlay :show="showOverlay" rounded="sm" variant="transparent">
@@ -64,5 +66,7 @@
 </script>
 
 <style scoped>
-
+  a:hover{
+    text-decoration: none;
+  }
 </style>

@@ -2,6 +2,7 @@
   <div>
     <Header/>
     <router-view/>
+    <b-row class="my-md-5 my-4"><b-col></b-col></b-row>
     <Footer/>
   </div>
 </template>
@@ -20,5 +21,4 @@ export default Vue.extend({
 </script>
 
 <style>
-
 </style>

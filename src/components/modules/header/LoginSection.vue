@@ -1,6 +1,6 @@
 ﻿<template>
   <div>
-    <b-button v-b-modal.loginmodal variant="info">Войти</b-button>
+    <b-nav-item v-b-modal.loginmodal variant="info">Войти</b-nav-item>
 
     <b-modal id="loginmodal"
              title="Вход"

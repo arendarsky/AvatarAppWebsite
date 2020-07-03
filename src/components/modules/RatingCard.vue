@@ -1,24 +1,21 @@
 <template>
-  <b-container fluid>
-    <b-row class="justify-content-center m-2">
-      <b-col cols="auto">
-        <b-avatar :src="avatarSource" variant="info" size="lg"></b-avatar>
-      </b-col>
-      <b-col cols="4" md="auto" align-self="center">
-        <b-card-text class="text-light text-wrap text-truncate">{{ratingItem.name}}</b-card-text>
-      </b-col>
-      <b-col cols="auto">
-        <div>
-          <b-avatar variant="info" :text="`${rankingPlace}`"/>
-        </div>
-        <b-badge pill  variant="success">{{ratingItem.likesNumber}} <b-icon-heart-fill></b-icon-heart-fill></b-badge>
+  <b-container align="center">
+    <b-row class="m-2" align-h="center">
+      <b-col cols="8"  md="4">
+      <p v-if="xs" class="common-text text-truncate">#{{rankingPlace}} {{ratingItem.name}}</p>
+        <h5 v-else class="common-text text-truncate">#{{rankingPlace}} {{ratingItem.name}}</h5>
+    </b-col>
+      <b-col cols="4" md="4">
+        <p v-if="xs" class="common-text">{{ratingItem.likesNumber}}
+          <b-icon-heart variant="info"></b-icon-heart>
+        </p>
+        <h5 v-else class="common-text">{{ratingItem.likesNumber}}
+          <b-icon-heart variant="info"></b-icon-heart>
+        </h5>
       </b-col>
     </b-row>
     <b-row>
-      <b-col>
-        <b-embed type="video" class="border-bottom border-top border-secondary" :src="videoSource"  aspect="16by9" preload="metadata" controls controlsList="nodownload">
-        </b-embed>
-      </b-col>
+      <VideoCard :video-source="videoSource"/>
     </b-row>
   </b-container>
 </template>
@@ -26,9 +23,13 @@
 <script lang="ts">
   import Vue from 'vue'
   import Resources from '@/network/api/Resources';
+  import VideoCard from '@/components/modules/VideoCard.vue';
+  import {screenSize} from '@/mixins/screenSize.js';
 
   export default Vue.extend({
     name: 'RatingCard',
+    mixins:[screenSize],
+    components: {VideoCard},
     props: {
       ratingItem: {
         type: Object,
@@ -50,11 +51,5 @@
 </script>
 
 <style scoped>
-  video:focus{
-    outline: none !important;
-  }
-  video{
-    border-radius: 20px;
-    overflow: hidden;
-  }
+
 </style>

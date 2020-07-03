@@ -1,9 +1,30 @@
 <template>
-  <b-container class="mt-3">
+  <b-container align="center">
+    <b-row class="my-1"><b-col></b-col></b-row>
     <b-row>
       <b-col>
-        <b-embed  class="border-bottom border-top border-secondary" autoplay loop type="video" :src="videoSource"  aspect="16by9" controls controlsList="nodownload">
-        </b-embed>
+        <h1 class="common-text">ВЫБЕРИ ЛУЧШЕГО ИЗ ЛУЧШИХ</h1>
+      </b-col>
+    </b-row>
+    <b-row class="mt-3 mb-1"><b-col></b-col></b-row>
+    <b-row>
+      <VideoCard :video-source="videoSource"/>
+    </b-row>
+    <b-row>
+      <b-col class="mt-3">
+        <h4 class="head-text">Хочешь увидеть в шоу?</h4>
+      </b-col>
+    </b-row>
+    <b-row class="mt-4 mx-auto" align-h="center">
+      <b-col md="3" cols="6">
+        <b-link target="_blank" @click="scrollToBottom">
+          <b-icon-x scale="5" variant="info"/>
+        </b-link>
+      </b-col>
+      <b-col md="3" cols="6">
+        <b-link target="_blank" @click="scrollToBottom">
+          <b-icon-heart scale="3" variant="info"/>
+        </b-link>
       </b-col>
     </b-row>
   </b-container>
@@ -11,24 +32,31 @@
 
 <script>
   import Resources from '@/network/api/Resources'
+  import VideoCard from '@/components/modules/VideoCard.vue'
 
   export default {
+    components: { VideoCard },
     name: 'Video',
     computed: {
       videoSource() {
         return new Resources().GetVideoSource(this.$route.params.id)
+      }
+    },
+    methods: {
+      scrollToBottom(){
+        window.scrollTo(0, document.body.scrollHeight || document.documentElement.scrollHeight);
       }
     }
   }
 </script>
 
 <style scoped>
-  video:focus{
-    outline: none !important;
+
+  .decision-button{
+
+    border-radius: 50%;
   }
-  video{
-    border-radius: 20px;
-    overflow: hidden;
-  }
+
+
 
 </style>

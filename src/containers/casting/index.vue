@@ -1,28 +1,18 @@
 <template>
   <b-container fluid align="center">
     <b-row>
-        <b-col align-self="center" order="2" order-md="1" class="p-2">
-          <b-button :disabled="!presenter.item"  pill size="lg" @click="nextItem(false)" variant="outline-info">
-            <b-icon-heart class="align-middle" variant="info"></b-icon-heart>
-          </b-button>
-        </b-col>
-        <b-col cols="12" md="9" xl="8" order="1" order-md="2">
-          <b-overlay :show="showOverlay" rounded="sm" variant="transparent">
-            <CastingCard v-if="presenter.item" :casting-item="presenter.item"/>
+        <b-col>
+            <CastingCard v-if="presenter.item" :casting-item="presenter.item" :cross-click="crossClick" :heart-click="heartClick"/>
             <b-card v-else body-bg-variant="dark" border-variant="dark" text-variant="light">
               <b-card-text>
                 Упс! Видео закончились
               </b-card-text>
-              <b-button v-show="!showOverlay" pill size="lg" @click="onLoad()" variant="outline-info">
-                <b-icon-arrow-clockwise variant="info"></b-icon-arrow-clockwise>
-              </b-button>
+              <b-overlay :show="showOverlay" rounded="sm" variant="transparent">
+              <b-link v-show="!showOverlay" @click="onLoad()" variant="outline-info">
+                <b-icon-arrow-clockwise scale="2" variant="info"></b-icon-arrow-clockwise>
+              </b-link>
+              </b-overlay>
             </b-card>
-          </b-overlay>
-        </b-col>
-        <b-col align-self="center" order="3" order-md="3" class="p-2">
-          <b-button :disabled="!presenter.item" @click="nextItem(true)" pill size="lg" variant="outline-success">
-            <b-icon-heart-fill class="align-middle" variant="info"></b-icon-heart-fill>
-          </b-button>
         </b-col>
     </b-row>
   </b-container>
@@ -56,6 +46,12 @@
       }
     },
     methods: {
+      async heartClick(){
+        await this.nextItem(true)
+      },
+      async crossClick(){
+        await this.nextItem(false)
+      },
       async nextItem(isLike){
         const useCase = new NextVideoUseCase({
           casting: new CastingEntity(),

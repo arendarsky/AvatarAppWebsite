@@ -1,58 +1,40 @@
 <template>
-
   <b-container align="center">
-  <b-row>
-    <b-col>
-      <div class="footerBorder">
-        <div class="footerBorder mt-3 mb-3 ml-4 mr-4">
-          <b-container class="mt-4 mb-4">
-            <b-row>
-              <b-col>
-                <b-container>
-                  <b-row>
-                    <b-col><p class="footerText">Скачивай приложение XCE FACTOR</p></b-col>
-                  </b-row>
-                  <b-row>
-                    <b-col><b-img alt="App Store" src="@/assets/logos/appstore.png"></b-col>
-                    <b-col></b-col>
-                  </b-row>
-                </b-container>
-              </b-col>
-              <b-col>
-                <b-container>
-                  <b-row>
-                    <b-col><p class="footerText">Следи за нами в соц. сетях</p></b-col>
-                  </b-row>
-                  <b-row>
-                    <b-col></b-col>
-                    <b-col></b-col>
-                  </b-row>
-                </b-container>
-
-              </b-col>
-            </b-row>
-          </b-container>
-        </div>
-      </div>
-    </b-col>
-  </b-row>
-</b-container>
+    <b-row class="mx-md-auto" align-h="center">
+      <b-col align-self="center">
+        <b-container class="footerBorder py-2 py-md-3 px-md-4">
+          <b-row>
+            <b-col>
+              <b-container class="footerBorder py-md-4 py-2">
+                <b-row>
+                  <b-col cols="6" class="p-0">
+                    <AppLinks/>
+                  </b-col>
+                  <b-col cols="6" class="p-0">
+                    <ContactLinks with-text="true"/>
+                  </b-col>
+                </b-row>
+              </b-container>
+            </b-col>
+          </b-row>
+        </b-container>
+      </b-col>
+    </b-row>
+  </b-container>
 </template>
-
 <script>
+  import AppLinks from '@/components/modules/home/AppLinks.vue'
+  import ContactLinks from '@/components/modules/home/ContactLinks'
+
   export default {
-    name: 'Footer'
+    name: 'Footer',
+    components: {
+      ContactLinks,
+      AppLinks
+    }
   }
 </script>
 
 <style scoped>
-  .footerBorder{
-    border: 1px solid #FF05B9;
-    box-sizing: border-box;
-  }
-  .footerText{
-    font-family: Montserrat,serif;
-    color: #FFFFFF;
-    text-transform: uppercase;
-  }
+
 </style>
