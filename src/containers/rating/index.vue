@@ -52,7 +52,7 @@
           errorService: new ErrorService({
             context: "mounting rating container"
           }),
-          number: 20
+          number: 50
         };
 
         await new LoadContainerUseCase(params).execute();

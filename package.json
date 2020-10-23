@@ -6,7 +6,9 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "generate-swagger-xcefactor": "node src/generate-swagger.ts"
+    "generate-swagger-xcefactor": "node src/generate-swagger.ts",
+    "deploy": "node src/sftp.ts",
+    "build-deploy": "npm run build && npm run deploy"
   },
   "dependencies": {
     "axios": "latest",
@@ -26,7 +28,8 @@
     "vue-router": "^3.1.5",
     "vue-video-player": "^5.0.2",
     "vuelidate": "^0.7.5",
-    "vuex": "^3.1.2"
+    "vuex": "^3.1.2",
+    "sftp-sync-deploy": "^0.7.1"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.2.0",
