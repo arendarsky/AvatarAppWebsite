@@ -25,8 +25,6 @@ export class ApiClient implements INetworkClient {
       };
     }
 
-    public baseUrl = 'https://xce-factor.ru';
-
     public timeout = 15 * 1000;
 
     public request<T extends IApiResponse>(request: IApiRequest<T>): Promise<T> {
@@ -41,7 +39,7 @@ export class ApiClient implements INetworkClient {
                     withCredentials: false,
                     data: !isRead && request.params,
                     timeout: this.timeout,
-                    baseURL: request.baseUrl || this.baseUrl,
+                    baseURL: request.baseUrl,
                     headers: request.auth ? ApiClient.createHeaders(userToken) : null,
                 })
                 .then((data) => {

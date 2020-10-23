@@ -14,11 +14,11 @@ export default class Resources {
   }
   public GetVideoSource(name: string): string {
     if (!name) { return ''; }
-    return this.apiClient.baseUrl + this.pathVideo + name;
+    return this.pathVideo + name;
   }
 
   public GetImageSource(name: string): string {
     if (!name) { return ''; }
-    return this.apiClient.baseUrl + this.pathToImage + name;
+    return this.pathToImage + name;
   }
 }

@@ -26,4 +26,10 @@ export namespace AdminApi {
     }
     public parse = (data: AxiosResponse) => data.data;
   }
+
+  export class SetSemifinalist implements IApiRequest<any>{
+    public path = 'api/admin/set_semifinalist';
+    public method = HttpMethod.GET;
+    public auth = true;
+  }
 }
